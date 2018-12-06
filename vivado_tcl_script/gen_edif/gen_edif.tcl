@@ -1,13 +1,17 @@
-# define output dir
-set outputdir ./resend_mult
-file mkdir $outputdir
-
 # set basic info
 set top resend_mult
 set part xc7a100tfgg484-2
 
+
+
+# define output dir
+set outputdir ./$top
+file mkdir $outputdir
+
+
+
 # read ip files to memory
-read_ip [glob -nocomplain ./resend_mult/resend_mult.xci]
+read_ip [glob -nocomplain ./$top/$top.xci]
 
 # Synth_design
 synth_design -rtl -name rtl_1 -top $top
