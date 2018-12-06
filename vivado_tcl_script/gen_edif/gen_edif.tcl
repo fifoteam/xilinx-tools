@@ -1,5 +1,13 @@
 # set basic info
-set top resend_mult
+
+if {[info exists LOOP]} {
+	puts	"gen_edif.tcl top has been defined******"
+} else {
+	set top resend_mult
+}
+
+
+
 set part xc7a100tfgg484-2
 
 
