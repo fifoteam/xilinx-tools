@@ -1,2 +1,2 @@
-exec updatemem -force -meminfo FacProgram_V01.01.009.040.mmi -bit FacProgFPGA_V01.01.009.040.bit -data FacProgFirmware_V02.02.fac.025.elf -proc microblaze_top_inst/system_wrapper_inst/system_i/microblaze_0 -out download.bit
+exec updatemem -force -meminfo mars_platform.mmi -bit mars_platform.bit -data firmware.elf -proc microblaze_wrapper_inst/microblaze_i/microblaze_0 -out download.bit
 exit
