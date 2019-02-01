@@ -16,5 +16,5 @@ write_checkpoint -force post_route.dcp
 
 
 #Generate Reports
+report_utilization -hierarchical -verbose  -file utilization_summary.rpt
 report_timing_summary -file timing_summary.rpt
-
