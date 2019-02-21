@@ -8,10 +8,6 @@ if {[info exists LOOP]} {
 
 
 
-set part xc7a100tfgg484-2
-
-
-
 # define output dir
 set outputdir ./$top
 file mkdir $outputdir
