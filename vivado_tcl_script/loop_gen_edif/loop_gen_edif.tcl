@@ -47,22 +47,24 @@ set LOOP	1
 ##	循环遍历每个 top_name
 ##	产生ip流程为  step1  添加ip 到vivado中；step2  生成ip；step3  生成edif
 ##	-------------------------------------------------------------------------------------
-open_project ./managed_ip_project.xpr
+
 
 foreach top_name [array names top_array] {
 	set top	$top_array($top_name)
 	set timeval [clock format [clock seconds] -format %Y-%m-%d_%H:%M:%S]
 	puts	"loop_gen_edif.tcl $top_array($top_name) start.The time is $timeval******"
 
+	open_project ./managed_ip_project/managed_ip_project.xpr
 	source add_ip.tcl
 	source gen_ip.tcl
+	close_project
 	source gen_edif.tcl
 
 	set timeval [clock format [clock seconds] -format %Y-%m-%d_%H:%M:%S]
 	puts	"loop_gen_edif.tcl $top_array($top_name) end.The time is $timeval******"
 }
 
-close_project
+
 ##	-------------------------------------------------------------------------------------
 ##	取消两个变量，如果单独调用flow.do，不需要这两个变量
 ##	-------------------------------------------------------------------------------------
