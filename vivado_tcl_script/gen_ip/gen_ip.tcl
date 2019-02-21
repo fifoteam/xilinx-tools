@@ -3,8 +3,8 @@
 if {[info exists LOOP]} {
 	puts	"gen_ip.tcl top has been defined******"
 } else {
-	set top gc_bfifo_w36d16k
-	open_project ./managed_ip_project.xpr
+	set top addr_buffer_w36d512_pe64_pf506
+	open_project ./managed_ip_project/managed_ip_project.xpr
 }
 
 
@@ -13,6 +13,12 @@ catch { config_ip_cache -export [get_ips -all $top] }
 export_ip_user_files -of_objects [get_files ./$top/$top.xci] -no_script -sync -force -quiet
 create_ip_run [get_files -of_objects [get_fileset sources_1] ./$top/$top.xci]
 export_simulation -of_objects [get_files ./$top/$top.xci] -directory ./ip_user_files/sim_scripts -ip_user_files_dir ./ip_user_files -ipstatic_source_dir ./ip_user_files/ipstatic -lib_map_path [list {modelsim=./managed_ip_project.cache/compile_simlib/modelsim} {questa=./managed_ip_project.cache/compile_simlib/questa} {riviera=./A7_IP/managed_ip_project.cache/compile_simlib/riviera} {activehdl=./managed_ip_project.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+
+if {[info exists LOOP]} {
+	puts	"gen_ip.tcl top has been defined******"
+} else {
+	close_project
+}
 
 
 
