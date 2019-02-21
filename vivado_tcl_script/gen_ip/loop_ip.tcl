@@ -49,7 +49,7 @@ set LOOP	1
 ##	-------------------------------------------------------------------------------------
 ##	循环遍历每个testcase
 ##	-------------------------------------------------------------------------------------
-open_project ./managed_ip_project.xpr
+open_project ./managed_ip_project/managed_ip_project.xpr
 
 foreach top_name [array names top_array] {
 	set top	$top_array($top_name)
@@ -59,6 +59,8 @@ foreach top_name [array names top_array] {
 	set timeval [clock format [clock seconds] -format %Y-%m-%d_%H:%M:%S]
 	puts	"gen_ip.tcl $top_array($top_name) end.The time is $timeval******"
 }
+
+close_project
 
 ##	-------------------------------------------------------------------------------------
 ##	取消两个变量，如果单独调用flow.do，不需要这两个变量
