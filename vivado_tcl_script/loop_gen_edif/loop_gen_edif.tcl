@@ -43,12 +43,26 @@ set top_array(01)  addr_buffer_w36d512_pe128_pf506
 set LOOP	1
 
 
+
+
+###	-------------------------------------------------------------------------------------
+###	清空 managed_ip_project 文件夹
+###	重新拿一个新的manageip的文件夹
+###	-------------------------------------------------------------------------------------
+#file delete -force managed_ip_project
+#file copy f:/kuaipan/kuaipan/FifoTeam/bat-tools/template_bat/vivado_ip_template/xc7a100tfgg484-2/managed_ip_project 	./
+
+
+file delete -force managed_ip_project
+file mkdir managed_ip_project
+create_project managed_ip_project ./managed_ip_project -part xc7a100tfgg484-2 -ip
+close_project
+
+
 ##	-------------------------------------------------------------------------------------
 ##	循环遍历每个 top_name
 ##	产生ip流程为  step1  添加ip 到vivado中；step2  生成ip；step3  生成edif
 ##	-------------------------------------------------------------------------------------
-
-
 foreach top_name [array names top_array] {
 	set top	$top_array($top_name)
 	set timeval [clock format [clock seconds] -format %Y-%m-%d_%H:%M:%S]
